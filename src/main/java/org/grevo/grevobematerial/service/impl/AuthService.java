@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -31,7 +32,7 @@ public class AuthService {
     @Autowired
     private JwtUtils jwtUtils;
 
-    // Đăng ký user mới
+    // --- 1. ĐĂNG KÝ USER MỚI ---
     public AuthResponse register(RegisterRequest request) {
         // Kiểm tra username đã tồn tại
         if (userRepository.existsByUsername(request.getUsername())) {
@@ -74,7 +75,7 @@ public class AuthService {
         );
     }
 
-    // Đăng nhập
+    // --- 2. ĐĂNG NHẬP THÔNG THƯỜNG ---
     public AuthResponse login(LoginRequest request) {
         // Xác thực user
         Authentication authentication = authenticationManager.authenticate(
@@ -92,6 +93,53 @@ public class AuthService {
         // Lấy thông tin user
         Users user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return new AuthResponse(
+                token,
+                user.getUserId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getRole()
+        );
+    }
+
+    // --- 3. ĐĂNG NHẬP BẰNG GOOGLE ---
+    public AuthResponse loginWithGoogle(String email, String fullName, String avatarUrl) {
+        // Tìm user trong DB bằng email
+        Users user = userRepository.findByEmail(email).orElse(null);
+
+        if (user == null) {
+            // Case A: User chưa tồn tại -> Tự động đăng ký
+            user = new Users();
+            user.setEmail(email);
+            user.setFullName(fullName);
+
+            // Với Google Login, ta lấy email làm username luôn để đảm bảo unique
+            user.setUsername(email);
+
+            // Set role mặc định
+            user.setRole("USER");
+
+            // Set password ngẫu nhiên (Vì họ login bằng Google nên không cần pass)
+            // Phải set vì DB thường yêu cầu cột password not null
+            user.setPassword(passwordEncoder.encode("GOOGLE_AUTH_" + UUID.randomUUID().toString()));
+
+            user.setCreatedAt(LocalDateTime.now());
+            user.setUpdatedAt(LocalDateTime.now());
+
+            // Nếu Entity Users của bạn có trường Avatar thì set vào
+            // user.setAvatar(avatarUrl);
+
+            userRepository.save(user);
+        } else {
+            // Case B: User đã tồn tại -> Cập nhật thông tin nếu cần (Optional)
+            // Ví dụ: Update lại Fullname nếu họ đổi bên Google
+            // user.setFullName(fullName);
+            // userRepository.save(user);
+        }
+
+        // Tạo JWT Token cho user này (Dùng hàm generateTokenFromUsername có sẵn)
+        String token = jwtUtils.generateTokenFromUsername(user.getUsername());
 
         return new AuthResponse(
                 token,

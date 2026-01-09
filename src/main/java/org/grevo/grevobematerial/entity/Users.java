@@ -43,6 +43,10 @@ public class Users {
     private String resetPasswordToken;
     private LocalDateTime resetPasswordTokenExpiry;
 
+
+    @Column(unique = true)
+    private String googleId;
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
