@@ -70,6 +70,7 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getFullName(),
                 user.getEmail(),
                 user.getRole()
         );
@@ -98,6 +99,7 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getFullName(),
                 user.getEmail(),
                 user.getRole()
         );
@@ -145,6 +147,7 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getFullName(),
                 user.getEmail(),
                 user.getRole()
         );
