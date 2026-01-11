@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,11 +18,28 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
+    @Column(unique = true)
+    private String googleId;
+
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String role = "USER";
+
+    private Boolean isActive = true;
+
+    private Boolean isVerified = false;
+
+    @Column(updatable = false)
+    private LocalDateTime createAt;
+
+    private LocalDateTime updateAt;
+
+    private String fullName;
 
     @Column(unique = true)
     private String email;
@@ -30,31 +48,19 @@ public class Users {
     private String phone;
 
     private String address;
-    private String fullName;
 
-    @Column(nullable = false)
-    private String role = "USER";
+    private String rsPasswordToken;
 
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private String resetPasswordToken;
-    private LocalDateTime resetPasswordTokenExpiry;
-
-
-    @Column(unique = true)
-    private String googleId;
+    private LocalDateTime rsPasswordTExpiry;
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
+        createAt = LocalDateTime.now();
+        updateAt = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        updateAt = LocalDateTime.now();
     }
 }

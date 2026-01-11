@@ -58,8 +58,6 @@ public class AuthService {
         user.setAddress(request.getAddress());
         user.setFullName(request.getFullName());
         user.setRole("USER");
-        user.setCreatedAt(LocalDateTime.now());
-        user.setUpdatedAt(LocalDateTime.now());
 
         userRepository.save(user);
 
@@ -72,8 +70,7 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole()
-        );
+                user.getRole());
     }
 
     // --- 2. ĐĂNG NHẬP THÔNG THƯỜNG ---
@@ -82,9 +79,7 @@ public class AuthService {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
-                        request.getPassword()
-                )
-        );
+                        request.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -101,8 +96,7 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole()
-        );
+                user.getRole());
     }
 
     // --- 3. ĐĂNG NHẬP BẰNG GOOGLE ---
@@ -126,9 +120,6 @@ public class AuthService {
             // Phải set vì DB thường yêu cầu cột password not null
             user.setPassword(passwordEncoder.encode("GOOGLE_AUTH_" + UUID.randomUUID().toString()));
 
-            user.setCreatedAt(LocalDateTime.now());
-            user.setUpdatedAt(LocalDateTime.now());
-
             // Nếu Entity Users của bạn có trường Avatar thì set vào
             // user.setAvatar(avatarUrl);
 
@@ -149,7 +140,6 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole()
-        );
+                user.getRole());
     }
 }
