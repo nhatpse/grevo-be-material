@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.grevo.grevobematerial.entity.enums.Role;
 
 import java.time.LocalDateTime;
 
@@ -27,8 +28,9 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role = "USER";
+    private Role role = Role.CITIZEN;
 
     private Boolean isActive = true;
 

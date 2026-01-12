@@ -60,7 +60,8 @@ public class AuthController {
 
         try {
             // 1. Cấu hình Google Verifier
-            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(),
+                    new GsonFactory())
                     // Chỉ chấp nhận token được tạo cho Client ID của ứng dụng này
                     .setAudience(Collections.singletonList(googleClientId))
                     .build();
@@ -72,12 +73,13 @@ public class AuthController {
                 // 3. Token hợp lệ -> Lấy thông tin user
                 GoogleIdToken.Payload googlePayload = idToken.getPayload();
 
+                String googleId = googlePayload.getSubject(); // Google's unique user ID
                 String email = googlePayload.getEmail();
                 String name = (String) googlePayload.get("name");
                 String pictureUrl = (String) googlePayload.get("picture");
 
                 // 4. Gọi Service để xử lý Logic (Lưu DB + Tạo JWT)
-                AuthResponse authResponse = authService.loginWithGoogle(email, name, pictureUrl);
+                AuthResponse authResponse = authService.loginWithGoogle(googleId, email, name, pictureUrl);
 
                 return ResponseEntity.ok(authResponse);
 

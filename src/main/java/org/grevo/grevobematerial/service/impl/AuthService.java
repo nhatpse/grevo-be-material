@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.grevo.grevobematerial.entity.enums.Role;
+
 @Service
 public class AuthService {
 
@@ -57,7 +59,7 @@ public class AuthService {
         user.setPhone(request.getPhone());
         user.setAddress(request.getAddress());
         user.setFullName(request.getFullName());
-        user.setRole("USER");
+        user.setRole(Role.CITIZEN);
 
         userRepository.save(user);
 
@@ -70,7 +72,7 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole());
+                user.getRole().name());
     }
 
     // --- 2. ĐĂNG NHẬP THÔNG THƯỜNG ---
@@ -96,17 +98,19 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole());
+                user.getRole().name());
     }
 
     // --- 3. ĐĂNG NHẬP BẰNG GOOGLE ---
-    public AuthResponse loginWithGoogle(String email, String fullName, String avatarUrl) {
-        // Tìm user trong DB bằng email
-        Users user = userRepository.findByEmail(email).orElse(null);
+    public AuthResponse loginWithGoogle(String googleId, String email, String fullName, String avatarUrl) {
+        // Tìm user trong DB bằng googleId trước, nếu không có thì tìm theo email
+        Users user = userRepository.findByGoogleId(googleId)
+                .orElse(userRepository.findByEmail(email).orElse(null));
 
         if (user == null) {
             // Case A: User chưa tồn tại -> Tự động đăng ký
             user = new Users();
+            user.setGoogleId(googleId);
             user.setEmail(email);
             user.setFullName(fullName);
 
@@ -114,7 +118,7 @@ public class AuthService {
             user.setUsername(email);
 
             // Set role mặc định
-            user.setRole("USER");
+            user.setRole(Role.CITIZEN);
 
             // Set password ngẫu nhiên (Vì họ login bằng Google nên không cần pass)
             // Phải set vì DB thường yêu cầu cột password not null
@@ -125,10 +129,11 @@ public class AuthService {
 
             userRepository.save(user);
         } else {
-            // Case B: User đã tồn tại -> Cập nhật thông tin nếu cần (Optional)
-            // Ví dụ: Update lại Fullname nếu họ đổi bên Google
-            // user.setFullName(fullName);
-            // userRepository.save(user);
+            // Case B: User đã tồn tại -> Cập nhật googleId nếu chưa có
+            if (user.getGoogleId() == null) {
+                user.setGoogleId(googleId);
+                userRepository.save(user);
+            }
         }
 
         // Tạo JWT Token cho user này (Dùng hàm generateTokenFromUsername có sẵn)
@@ -140,6 +145,6 @@ public class AuthService {
                 user.getUsername(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole());
+                user.getRole().name());
     }
 }
