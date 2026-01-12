@@ -55,6 +55,8 @@ public class Users {
 
     private LocalDateTime rsPasswordTExpiry;
 
+    private String avatar;
+
     @PrePersist
     protected void onCreate() {
         createAt = LocalDateTime.now();

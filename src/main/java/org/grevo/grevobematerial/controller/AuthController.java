@@ -25,7 +25,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    // Lấy Client ID từ application.properties
+    // Get Client ID từ application.properties
     @Value("${google.client.id}")
     private String googleClientId;
 
@@ -59,26 +59,21 @@ public class AuthController {
         String tokenFromFrontend = payload.get("token");
 
         try {
-            // 1. Cấu hình Google Verifier
             GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(),
                     new GsonFactory())
-                    // Chỉ chấp nhận token được tạo cho Client ID của ứng dụng này
                     .setAudience(Collections.singletonList(googleClientId))
                     .build();
 
-            // 2. Xác thực token (Google sẽ kiểm tra chữ ký và hạn sử dụng)
             GoogleIdToken idToken = verifier.verify(tokenFromFrontend);
 
             if (idToken != null) {
-                // 3. Token hợp lệ -> Lấy thông tin user
                 GoogleIdToken.Payload googlePayload = idToken.getPayload();
 
-                String googleId = googlePayload.getSubject(); // Google's unique user ID
+                String googleId = googlePayload.getSubject();
                 String email = googlePayload.getEmail();
                 String name = (String) googlePayload.get("name");
                 String pictureUrl = (String) googlePayload.get("picture");
 
-                // 4. Gọi Service để xử lý Logic (Lưu DB + Tạo JWT)
                 AuthResponse authResponse = authService.loginWithGoogle(googleId, email, name, pictureUrl);
 
                 return ResponseEntity.ok(authResponse);
@@ -93,5 +88,10 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("message", "Google Authentication Failed: " + e.getMessage()));
         }
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout() {
+        return ResponseEntity.ok(Map.of("success", true, "message", "Logged out successfully"));
     }
 }
