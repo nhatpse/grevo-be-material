@@ -70,7 +70,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(
                 Arrays.asList("http://localhost:3000", "http://localhost:5173",
-                                "https://www.grevo.org","https://grevo.org")
+                                "https://www.grevo.org","https://grevo.org")    
         );
         configuration.setAllowedMethods(
                 Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")

@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.grevo.grevobematerial.entity.enums.Role;
@@ -70,9 +69,13 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getGoogleId(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole().name());
+                user.getPhone(),
+                user.getAddress(),
+                user.getRole().name(),
+                user.getAvatar());
     }
 
     // --- 2. ĐĂNG NHẬP THÔNG THƯỜNG ---
@@ -96,9 +99,13 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getGoogleId(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole().name());
+                user.getPhone(),
+                user.getAddress(),
+                user.getRole().name(),
+                user.getAvatar());
     }
 
     // --- 3. ĐĂNG NHẬP BẰNG GOOGLE ---
@@ -143,8 +150,12 @@ public class AuthService {
                 token,
                 user.getUserId(),
                 user.getUsername(),
+                user.getGoogleId(),
                 user.getFullName(),
                 user.getEmail(),
-                user.getRole().name());
+                user.getPhone(),
+                user.getAddress(),
+                user.getRole().name(),
+                user.getAvatar());
     }
 }

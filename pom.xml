@@ -144,6 +144,13 @@
             <artifactId>spring-boot-starter-security-oauth2-client</artifactId>
         </dependency>
 
+        <!-- Cloudinary for cloud image storage -->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.36.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
