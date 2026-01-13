@@ -47,10 +47,27 @@ public class NominatimGeocodingProvider implements GeocodingProvider {
             if (addressNode.isMissingNode())
                 return null;
 
-            // Extract street
+            // Extract street with full detail (including place/building name)
+            String placeName = root.has("name") && !root.get("name").asText().isEmpty()
+                    ? root.get("name").asText()
+                    : null;
             String road = getText(addressNode, "road", "pedestrian", "street");
             String houseNumber = getText(addressNode, "house_number");
-            String street = (houseNumber != null ? houseNumber + " " : "") + (road != null ? road : "");
+
+            // Build street: [PlaceName], [HouseNumber] [Road]
+            StringBuilder streetBuilder = new StringBuilder();
+            if (placeName != null) {
+                streetBuilder.append(placeName);
+            }
+            if (houseNumber != null || road != null) {
+                if (streetBuilder.length() > 0)
+                    streetBuilder.append(", ");
+                if (houseNumber != null)
+                    streetBuilder.append(houseNumber).append(" ");
+                if (road != null)
+                    streetBuilder.append(road);
+            }
+            String street = streetBuilder.toString().trim();
 
             // Extract raw fields (suburb prioritized over neighbourhood)
             String rawWard = getText(addressNode, "suburb", "quarter", "village", "town", "neighbourhood");
