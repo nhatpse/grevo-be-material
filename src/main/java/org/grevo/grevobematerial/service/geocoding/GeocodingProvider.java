@@ -1,7 +1,8 @@
 package org.grevo.grevobematerial.service.geocoding;
 
-import org.grevo.grevobematerial.dto.response.AddressResponse;
+import org.grevo.grevobematerial.dto.request.CoordinatesRequest;
+import org.grevo.grevobematerial.dto.response.LocationResponse;
 
 public interface GeocodingProvider {
-    AddressResponse reverseGeocode(double latitude, double longitude);
+    LocationResponse reverseGeocode(CoordinatesRequest request);
 }
