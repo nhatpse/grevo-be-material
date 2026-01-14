@@ -1,35 +1,47 @@
 package org.grevo.grevobematerial.service;
 
+import org.grevo.grevobematerial.dto.request.CoordinatesRequest;
 import org.grevo.grevobematerial.dto.response.LocationResponse;
-import org.grevo.grevobematerial.service.geocoding.GeocodingProvider;
+import org.grevo.grevobematerial.service.geocoding.GoongGeocodingProvider;
 import org.springframework.stereotype.Service;
 
+/**
+ * Location service using Goong.io APIs for geocoding and place search.
+ */
 @Service
 public class LocationService {
 
-    private final GeocodingProvider geocodingProvider;
-    private final org.grevo.grevobematerial.service.geocoding.impl.OpenMapGeocodingProvider openMapProvider;
+    private final GoongGeocodingProvider goongProvider;
 
-    public LocationService(GeocodingProvider geocodingProvider,
-            org.grevo.grevobematerial.service.geocoding.impl.OpenMapGeocodingProvider openMapProvider) {
-        this.geocodingProvider = geocodingProvider;
-        this.openMapProvider = openMapProvider;
+    public LocationService(GoongGeocodingProvider goongProvider) {
+        this.goongProvider = goongProvider;
     }
 
-    public LocationResponse getAddressFromCoordinates(
-            org.grevo.grevobematerial.dto.request.CoordinatesRequest request) {
-        return geocodingProvider.reverseGeocode(request);
+    /**
+     * Reverse geocode coordinates to address.
+     */
+    public LocationResponse getAddressFromCoordinates(CoordinatesRequest request) {
+        return goongProvider.reverseGeocode(request.getLat(), request.getLng());
     }
 
+    /**
+     * Autocomplete search for places.
+     */
     public String autocomplete(String text, String sessionToken) {
-        return openMapProvider.autocomplete(text, sessionToken);
+        return goongProvider.autocomplete(text, sessionToken);
     }
 
-    public String getPlaceDetail(String ids, String sessionToken) {
-        return openMapProvider.getPlaceDetail(ids, sessionToken);
+    /**
+     * Get place details by place_id.
+     */
+    public String getPlaceDetail(String placeId, String sessionToken) {
+        return goongProvider.getPlaceDetail(placeId, sessionToken);
     }
 
+    /**
+     * Generate static map URL for a location.
+     */
     public String getStaticMapUrl(double lat, double lng) {
-        return openMapProvider.getStaticMapUrl(lat, lng);
+        return goongProvider.getStaticMapUrl(lat, lng);
     }
 }

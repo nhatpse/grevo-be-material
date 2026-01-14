@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ * Location controller providing geocoding and place search endpoints.
+ * Uses Goong.io APIs for Vietnamese location data.
+ */
 @RestController
 @RequestMapping("/api/location")
 public class LocationController {
@@ -18,6 +22,10 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+    /**
+     * Reverse geocode coordinates to address.
+     * POST /api/location
+     */
     @PostMapping
     public ResponseEntity<?> reverseGeocode(@RequestBody CoordinatesRequest request) {
         try {
@@ -32,29 +40,44 @@ public class LocationController {
         }
     }
 
+    /**
+     * Autocomplete search for places.
+     * GET /api/location/autocomplete?text=...&session_token=...
+     */
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autocomplete(@RequestParam String text,
             @RequestParam(name = "session_token", required = false) String sessionToken) {
         String result = locationService.autocomplete(text, sessionToken);
-        if (result == null)
-            return ResponseEntity.badRequest().body("Autocomplete failed or Key invalid");
-        return ResponseEntity.ok(result); // Return raw JSON string from OpenMap
+        if (result == null) {
+            return ResponseEntity.badRequest().body(Map.of("message", "Autocomplete failed or API key invalid"));
+        }
+        return ResponseEntity.ok(result);
     }
 
+    /**
+     * Get place details by place_id.
+     * GET /api/location/details?ids=...&session_token=...
+     */
     @GetMapping("/details")
     public ResponseEntity<?> getPlaceDetails(@RequestParam String ids,
             @RequestParam(name = "session_token", required = false) String sessionToken) {
         String result = locationService.getPlaceDetail(ids, sessionToken);
-        if (result == null)
+        if (result == null) {
             return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(result); // Return raw JSON string
+        }
+        return ResponseEntity.ok(result);
     }
 
+    /**
+     * Generate static map URL for a location.
+     * GET /api/location/static-map?lat=...&lng=...
+     */
     @GetMapping("/static-map")
     public ResponseEntity<?> getStaticMap(@RequestParam double lat, @RequestParam double lng) {
         String url = locationService.getStaticMapUrl(lat, lng);
-        if (url == null)
-            return ResponseEntity.badRequest().body("Could not generate map URL");
+        if (url == null) {
+            return ResponseEntity.badRequest().body(Map.of("message", "Could not generate map URL"));
+        }
         return ResponseEntity.ok(Map.of("url", url));
     }
 }
