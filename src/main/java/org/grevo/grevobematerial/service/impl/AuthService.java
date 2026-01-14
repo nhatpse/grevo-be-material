@@ -3,7 +3,9 @@ package org.grevo.grevobematerial.service.impl;
 import org.grevo.grevobematerial.dto.request.LoginRequest;
 import org.grevo.grevobematerial.dto.request.RegisterRequest;
 import org.grevo.grevobematerial.dto.response.AuthResponse;
+import org.grevo.grevobematerial.entity.Citizens;
 import org.grevo.grevobematerial.entity.Users;
+import org.grevo.grevobematerial.repository.CitizensRepository;
 import org.grevo.grevobematerial.repository.UserRepository;
 import org.grevo.grevobematerial.security.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class AuthService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CitizensRepository citizensRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -56,6 +61,12 @@ public class AuthService {
         user.setRole(Role.CITIZEN);
 
         userRepository.save(user);
+
+        // Create Citizens profile for new user with role CITIZEN
+        Citizens citizen = new Citizens();
+        citizen.setUser(user);
+        citizen.setTotalPoints(0);
+        citizensRepository.save(citizen);
 
         String token = jwtUtils.generateTokenFromUsername(user.getUsername());
 
@@ -112,6 +123,12 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode("GOOGLE_AUTH_" + UUID.randomUUID().toString()));
 
             userRepository.save(user);
+
+            // Create Citizens profile for new Google user with role CITIZEN
+            Citizens citizen = new Citizens();
+            citizen.setUser(user);
+            citizen.setTotalPoints(0);
+            citizensRepository.save(citizen);
         } else {
             if (user.getGoogleId() == null) {
                 user.setGoogleId(googleId);

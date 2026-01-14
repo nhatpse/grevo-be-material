@@ -12,7 +12,8 @@ public class WasteReportRequest {
     private String description;
     private String latitude;
     private String longitude;
-    private Integer wasteTypeId;
-    private Integer areaId; // Optional, can be null
+    private String wasteType; // 'organic', 'recyclable', 'hazardous', 'Other'
+    private Integer areaId;
     private Double wasteQuantity;
+    private String itemWeights;
 }

@@ -108,6 +108,127 @@ public class GoongGeocodingProvider {
     }
 
     /**
+     * Forward geocode address text to coordinates using Goong.io Autocomplete API +
+     * Place Detail API.
+     * Logic: Autocomplete (get place_id) -> Place Detail (get location).
+     * 
+     * @param address The address text to geocode
+     * @param biasLat Optional latitude (not used in this flow)
+     * @param biasLng Optional longitude (not used in this flow)
+     * @return Map containing lat, lng, formattedAddress, confidence or null if not
+     *         found
+     */
+    public java.util.Map<String, Object> forwardGeocode(String address, Double biasLat, Double biasLng) {
+        log.info("Goong.io Autocomplete Geocode for: {}", address);
+        if (apiKey == null || apiKey.isBlank()) {
+            log.warn("Goong API Key is MISSING. Skipping geocoding.");
+            return null;
+        }
+
+        try {
+            // Step 1: Call Autocomplete API to get place_id
+            String placeId = getFirstPlaceIdFromAutocomplete(address);
+            if (placeId == null) {
+                log.info("No autocomplete results/place_id found for: {}", address);
+                return null;
+            }
+
+            // Step 2: Call Place Detail API to get coordinates
+            return getCoordinatesFromPlaceId(placeId);
+
+        } catch (Exception e) {
+            log.warn("Goong Autocomplete geocode failed: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    private String getFirstPlaceIdFromAutocomplete(String text) {
+        try {
+            String uri = UriComponentsBuilder.fromPath("/v2/place/autocomplete")
+                    .queryParam("input", text)
+                    .queryParam("api_key", apiKey)
+                    .build()
+                    .encode()
+                    .toUriString();
+
+            String response = restClient.get().uri(uri).retrieve().body(String.class);
+            if (response == null)
+                return null;
+
+            JsonNode root = objectMapper.readTree(response);
+            JsonNode predictions = root.path("predictions");
+
+            if (predictions.isArray() && predictions.size() > 0) {
+                return predictions.get(0).path("place_id").asText();
+            }
+            return null;
+        } catch (Exception e) {
+            log.error("Error getting place_id from autocomplete: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    private java.util.Map<String, Object> getCoordinatesFromPlaceId(String placeId) {
+        try {
+            String uri = UriComponentsBuilder.fromPath("/v2/place/detail")
+                    .queryParam("place_id", placeId)
+                    .queryParam("api_key", apiKey)
+                    .build()
+                    .encode()
+                    .toUriString();
+
+            String response = restClient.get().uri(uri).retrieve().body(String.class);
+            if (response == null)
+                return null;
+
+            JsonNode root = objectMapper.readTree(response);
+            JsonNode result = root.path("result");
+
+            if (result.isMissingNode() || result.isNull()) {
+                return null;
+            }
+
+            JsonNode geometry = result.path("geometry");
+            JsonNode location = geometry.path("location");
+
+            double lat = location.path("lat").asDouble();
+            double lng = location.path("lng").asDouble();
+            String formattedAddress = getTextOrEmpty(result, "formatted_address");
+            String name = getTextOrEmpty(result, "name");
+
+            if (formattedAddress.isEmpty()) {
+                formattedAddress = name;
+            }
+
+            // Determine confidence (Autocomplete results are usually quite confident if
+            // clicked/selected,
+            // but here we are taking the first top result)
+            String confidence = "high"; // Default to high for specific place result
+
+            log.info("Place Detail Result: lat={}, lng={}, address={}", lat, lng, formattedAddress);
+
+            java.util.Map<String, Object> responseMap = new java.util.HashMap<>();
+            responseMap.put("lat", lat);
+            responseMap.put("lng", lng);
+            responseMap.put("formattedAddress", formattedAddress);
+            responseMap.put("confidence", confidence);
+
+            // Include compound info
+            JsonNode compound = result.path("compound");
+            if (!compound.isMissingNode()) {
+                responseMap.put("ward", getTextOrEmpty(compound, "commune"));
+                responseMap.put("province", getTextOrEmpty(compound, "province"));
+            }
+
+            return responseMap;
+
+        } catch (Exception e) {
+            log.error("Error getting details from place_id: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    /**
      * Autocomplete search for places using V2 API.
      * API: GET /v2/place/autocomplete?input={text}&api_key={key}
      */

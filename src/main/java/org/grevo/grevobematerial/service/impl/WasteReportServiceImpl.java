@@ -23,19 +23,25 @@ public class WasteReportServiceImpl implements WasteReportService {
     private final WasteReportImageRepository wasteReportImageRepository;
     private final CitizensRepository citizensRepository;
     private final UserRepository userRepository;
-    private final WasteTypesRepository wasteTypesRepository;
     private final ServiceAreasRepository serviceAreasRepository;
     private final CloudinaryService cloudinaryService;
 
     @Override
     @Transactional
-    public WasteReportResponse createReport(WasteReportRequest request, List<MultipartFile> images, String userEmail) {
-        // 1. Get User and Citizen
-        Users user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public WasteReportResponse createReport(WasteReportRequest request, List<MultipartFile> images, String username) {
+        // 1. Get User and Citizen (principal.getName() returns username from JWT, not
+        // email)
+        Users user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
 
+        // Get or create Citizens profile for this user
         Citizens citizen = citizensRepository.findByUser(user)
-                .orElseThrow(() -> new RuntimeException("Citizen profile not found for user"));
+                .orElseGet(() -> {
+                    Citizens newCitizen = new Citizens();
+                    newCitizen.setUser(user);
+                    newCitizen.setTotalPoints(0);
+                    return citizensRepository.save(newCitizen);
+                });
 
         // 2. Create WasteReports entity
         WasteReports report = new WasteReports();
@@ -46,13 +52,10 @@ public class WasteReportServiceImpl implements WasteReportService {
         report.setLongitude(request.getLongitude());
         report.setStatus("PENDING");
         report.setWasteQuantity(request.getWasteQuantity());
+        report.setItemWeights(request.getItemWeights());
 
-        // Set Waste Type
-        if (request.getWasteTypeId() != null) {
-            WasteTypes wasteType = wasteTypesRepository.findById(request.getWasteTypeId())
-                    .orElseThrow(() -> new RuntimeException("Waste Type not found"));
-            report.setWasteType(wasteType);
-        }
+        // Set Waste Type (String: 'organic', 'recyclable', 'hazardous', 'Other')
+        report.setWasteType(request.getWasteType());
 
         // Set Service Area (Optional)
         if (request.getAreaId() != null) {
@@ -94,7 +97,8 @@ public class WasteReportServiceImpl implements WasteReportService {
                 .qualityScore(report.getQualityScore())
                 .createdAt(report.getCreatedAt())
                 .wasteQuantity(report.getWasteQuantity())
-                .wasteTypeName(report.getWasteType() != null ? report.getWasteType().getName() : null)
+                .itemWeights(report.getItemWeights())
+                .wasteTypeName(report.getWasteType())
                 .imageUrls(imageUrls)
                 .build();
     }

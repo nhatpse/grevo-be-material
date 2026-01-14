@@ -80,4 +80,38 @@ public class LocationController {
         }
         return ResponseEntity.ok(Map.of("url", url));
     }
+
+    /**
+     * Forward geocode address to coordinates.
+     * GET /api/location/geocode?address=...&lat=...&lng=...
+     * 
+     * @param address Required - address text to geocode
+     * @param lat     Optional - latitude for location bias (improves accuracy)
+     * @param lng     Optional - longitude for location bias (improves accuracy)
+     */
+    @GetMapping("/geocode")
+    public ResponseEntity<?> geocodeAddress(
+            @RequestParam String address,
+            @RequestParam(required = false) Double lat,
+            @RequestParam(required = false) Double lng) {
+        if (address == null || address.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "error", "Missing parameter",
+                    "message", "Parameter 'address' is required"));
+        }
+
+        try {
+            var result = locationService.forwardGeocode(address, lat, lng);
+            if (result == null) {
+                return ResponseEntity.status(404).body(Map.of(
+                        "error", "Address not found",
+                        "message", "Could not geocode the provided address"));
+            }
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error", "Geocoding failed",
+                    "message", e.getMessage()));
+        }
+    }
 }

@@ -7,5 +7,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface WasteReportService {
-    WasteReportResponse createReport(WasteReportRequest request, List<MultipartFile> images, String userEmail);
+    WasteReportResponse createReport(WasteReportRequest request, List<MultipartFile> images, String username);
 }

@@ -26,6 +26,10 @@ public class LocationService {
         return goongProvider.getPlaceDetail(placeId, sessionToken);
     }
 
+    public java.util.Map<String, Object> forwardGeocode(String address, Double lat, Double lng) {
+        return goongProvider.forwardGeocode(address, lat, lng);
+    }
+
     public String getStaticMapUrl(double lat, double lng) {
         return goongProvider.getStaticMapUrl(lat, lng);
     }

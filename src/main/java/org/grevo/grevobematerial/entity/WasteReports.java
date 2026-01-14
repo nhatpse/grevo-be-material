@@ -38,15 +38,16 @@ public class WasteReports {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "waste_type_id")
-    private WasteTypes wasteType;
+    private String wasteType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "area_id")
     private ServiceAreas area;
 
     private Double wasteQuantity;
+
+    @Column(columnDefinition = "TEXT")
+    private String itemWeights;
 
     @PrePersist
     protected void onCreate() {

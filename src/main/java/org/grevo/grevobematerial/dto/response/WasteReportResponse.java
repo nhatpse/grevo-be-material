@@ -23,5 +23,6 @@ public class WasteReportResponse {
     private LocalDateTime createdAt;
     private Double wasteQuantity;
     private String wasteTypeName;
+    private String itemWeights;
     private List<String> imageUrls;
 }
