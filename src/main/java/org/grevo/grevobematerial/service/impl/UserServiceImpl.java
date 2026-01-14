@@ -64,10 +64,7 @@ public class UserServiceImpl implements UserService {
         Users user = getProfile(username);
 
         try {
-            // Upload to Cloudinary
             String avatarUrl = cloudinaryService.uploadImage(file, "grevo/avatars");
-
-            // Save URL to database
             user.setAvatar(avatarUrl);
             return userRepository.save(user);
 

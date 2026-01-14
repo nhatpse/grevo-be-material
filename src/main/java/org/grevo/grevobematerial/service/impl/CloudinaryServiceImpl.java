@@ -19,21 +19,17 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
     @Override
     public String uploadImage(MultipartFile file, String folder) throws IOException {
-        // Validate file
         if (file.isEmpty()) {
             throw new IOException("File is empty");
         }
 
-        // Prepare upload parameters
         Map<String, Object> uploadParams = new HashMap<>();
         uploadParams.put("folder", folder);
         uploadParams.put("resource_type", "auto");
 
-        // Upload to Cloudinary
         @SuppressWarnings("unchecked")
         Map<String, Object> uploadResult = cloudinary.uploader().upload(file.getBytes(), uploadParams);
 
-        // Return secure URL
         return (String) uploadResult.get("secure_url");
     }
 

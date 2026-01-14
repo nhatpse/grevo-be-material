@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class LocationResponse {
-    private String addressDetails; // Street name, house number, POI details
-    private String city; // City / Province
-    private String ward; // Ward / Commune
+    private String addressDetails;
+    private String city;
+    private String ward;
 }

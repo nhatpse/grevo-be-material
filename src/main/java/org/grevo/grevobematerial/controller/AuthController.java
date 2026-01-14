@@ -25,7 +25,6 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    // Get Client ID từ application.properties
     @Value("${google.client.id}")
     private String googleClientId;
 
