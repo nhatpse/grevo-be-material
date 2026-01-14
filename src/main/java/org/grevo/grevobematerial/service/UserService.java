@@ -17,4 +17,7 @@ public interface UserService {
     Users removeAvatar(String username);
 
     void deleteAccount(String username);
+
+    org.springframework.data.domain.Page<org.grevo.grevobematerial.dto.response.UserManagementResponse> getUsers(
+            String search, String role, org.springframework.data.domain.Pageable pageable);
 }

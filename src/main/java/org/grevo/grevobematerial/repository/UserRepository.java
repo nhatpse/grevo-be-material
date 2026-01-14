@@ -6,8 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
 @Repository
-public interface UserRepository extends JpaRepository<Users, Integer> {
+public interface UserRepository extends JpaRepository<Users, Integer>, JpaSpecificationExecutor<Users> {
 
     Optional<Users> findByUsername(String username);
 

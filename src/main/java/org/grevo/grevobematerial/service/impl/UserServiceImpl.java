@@ -86,4 +86,48 @@ public class UserServiceImpl implements UserService {
         Users user = getProfile(username);
         userRepository.delete(user);
     }
+
+    @Override
+    public org.springframework.data.domain.Page<org.grevo.grevobematerial.dto.response.UserManagementResponse> getUsers(
+            String search, String role, org.springframework.data.domain.Pageable pageable) {
+        org.springframework.data.jpa.domain.Specification<Users> spec = (root, query, criteriaBuilder) -> {
+            java.util.List<jakarta.persistence.criteria.Predicate> predicates = new java.util.ArrayList<>();
+
+            if (search != null && !search.trim().isEmpty()) {
+                String likeSearch = "%" + search.toLowerCase() + "%";
+                predicates.add(criteriaBuilder.or(
+                        criteriaBuilder.like(criteriaBuilder.lower(root.get("username")), likeSearch),
+                        criteriaBuilder.like(criteriaBuilder.lower(root.get("email")), likeSearch),
+                        criteriaBuilder.like(criteriaBuilder.lower(root.get("fullName")), likeSearch)));
+            }
+
+            if (role != null && !role.trim().isEmpty() && !role.equalsIgnoreCase("ALL")) {
+                try {
+                    org.grevo.grevobematerial.entity.enums.Role roleEnum = org.grevo.grevobematerial.entity.enums.Role
+                            .valueOf(role.toUpperCase());
+                    predicates.add(criteriaBuilder.equal(root.get("role"), roleEnum));
+                } catch (IllegalArgumentException e) {
+                    // Ignore invalid roles or handle validation
+                }
+            }
+
+            return criteriaBuilder.and(predicates.toArray(new jakarta.persistence.criteria.Predicate[0]));
+        };
+
+        org.springframework.data.domain.Page<Users> usersPage = userRepository.findAll(spec, pageable);
+
+        return usersPage.map(user -> org.grevo.grevobematerial.dto.response.UserManagementResponse.builder()
+                .userId(user.getUserId())
+                .username(user.getUsername())
+                .fullName(user.getFullName())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .isActive(user.getIsActive())
+                .avatar(user.getAvatar())
+                .phone(user.getPhone())
+                .address(user.getAddress())
+                .createdAt(user.getCreateAt())
+                .updatedAt(user.getUpdateAt())
+                .build());
+    }
 }
