@@ -39,4 +39,23 @@ public class AdminUserController {
 
         return ResponseEntity.ok(users);
     }
+
+    @org.springframework.web.bind.annotation.PutMapping("/{userId}")
+    public ResponseEntity<UserManagementResponse> updateUser(
+            @org.springframework.web.bind.annotation.PathVariable Integer userId,
+            @org.springframework.web.bind.annotation.RequestBody org.grevo.grevobematerial.dto.request.AdminUpdateUserRequest request) {
+        return ResponseEntity.ok(userService.updateUser(userId, request));
+    }
+
+    @org.springframework.web.bind.annotation.DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@org.springframework.web.bind.annotation.PathVariable Integer userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @org.springframework.web.bind.annotation.PostMapping("/{userId}/reset-password")
+    public ResponseEntity<String> resetPassword(@org.springframework.web.bind.annotation.PathVariable Integer userId) {
+        userService.resetPassword(userId);
+        return ResponseEntity.ok("Password reset successfully to 123456");
+    }
 }

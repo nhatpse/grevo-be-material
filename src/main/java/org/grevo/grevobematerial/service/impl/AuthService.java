@@ -119,6 +119,10 @@ public class AuthService {
             }
         }
 
+        if (!user.getIsActive()) {
+            throw new RuntimeException("Account is disabled/banned!");
+        }
+
         String token = jwtUtils.generateTokenFromUsername(user.getUsername());
 
         return new AuthResponse(

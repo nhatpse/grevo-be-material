@@ -130,4 +130,51 @@ public class UserServiceImpl implements UserService {
                 .updatedAt(user.getUpdateAt())
                 .build());
     }
+
+    @Override
+    public org.grevo.grevobematerial.dto.response.UserManagementResponse updateUser(Integer userId,
+            org.grevo.grevobematerial.dto.request.AdminUpdateUserRequest request) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (request.getRole() != null) {
+            user.setRole(request.getRole());
+        }
+
+        if (request.getIsActive() != null) {
+            user.setIsActive(request.getIsActive());
+        }
+
+        user = userRepository.save(user);
+
+        return org.grevo.grevobematerial.dto.response.UserManagementResponse.builder()
+                .userId(user.getUserId())
+                .username(user.getUsername())
+                .fullName(user.getFullName())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .isActive(user.getIsActive())
+                .avatar(user.getAvatar())
+                .phone(user.getPhone())
+                .address(user.getAddress())
+                .createdAt(user.getCreateAt())
+                .updatedAt(user.getUpdateAt())
+                .build();
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new RuntimeException("User not found");
+        }
+        userRepository.deleteById(userId);
+    }
+
+    @Override
+    public void resetPassword(Integer userId) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setPassword(passwordEncoder.encode("123456"));
+        userRepository.save(user);
+    }
 }

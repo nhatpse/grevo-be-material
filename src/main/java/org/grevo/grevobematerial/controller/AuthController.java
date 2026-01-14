@@ -47,6 +47,9 @@ public class AuthController {
         try {
             AuthResponse response = authService.login(request);
             return ResponseEntity.ok(response);
+        } catch (org.springframework.security.authentication.DisabledException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(new AuthResponse("Account is disabled"));
         } catch (Exception e) {
             return ResponseEntity.badRequest()
                     .body(new AuthResponse("Username or Password is wrong"));
@@ -83,6 +86,10 @@ public class AuthController {
             }
 
         } catch (Exception e) {
+            if (e.getMessage().contains("Account is disabled")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(Map.of("message", "Account is disabled!"));
+            }
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("message", "Google Authentication Failed: " + e.getMessage()));
