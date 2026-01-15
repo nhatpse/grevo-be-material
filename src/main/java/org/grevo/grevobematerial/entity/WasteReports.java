@@ -49,6 +49,12 @@ public class WasteReports {
     @Column(columnDefinition = "TEXT")
     private String itemWeights;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assigned_collector_id")
+    private Collectors assignedCollector;
+
+    private LocalDateTime assignedAt;
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();

@@ -14,6 +14,7 @@ public class CollectorProfileResponse {
     private Integer maxCapacity;
     private String currentStatus;
     private LocalDateTime lastActiveAt;
+    private Boolean isOnline;
     private UserInfo user;
     private EnterpriseInfo enterprise;
 

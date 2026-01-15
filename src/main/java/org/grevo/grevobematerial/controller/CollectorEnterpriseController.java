@@ -57,17 +57,40 @@ public class CollectorEnterpriseController {
         Collectors collector = getOrCreateCollectorProfile(user);
 
         if (collector.getEnterprise() != null) {
+            String status = "APPROVED";
+
+            Optional<CollectorRequest> leaveReq = collectorRequestRepository.findByUserAndStatusAndType(user,
+                    RequestStatus.PENDING, org.grevo.grevobematerial.entity.enums.RequestType.LEAVE);
+
+            if (leaveReq.isPresent()) {
+                status = "LEAVE_REQUESTED";
+            } else {
+                Optional<CollectorRequest> leaveRej = collectorRequestRepository.findByUserAndStatusAndType(user,
+                        RequestStatus.REJECTED, org.grevo.grevobematerial.entity.enums.RequestType.LEAVE);
+                if (leaveRej.isPresent()) {
+                    status = "LEAVE_REJECTED";
+                }
+            }
+
             return ResponseEntity.ok(Map.of(
-                    "status", "APPROVED",
+                    "status", status,
                     "enterprise", collector.getEnterprise()));
         }
 
-        Optional<CollectorRequest> pendingRequest = collectorRequestRepository.findByUserAndStatus(user,
-                RequestStatus.PENDING);
+        Optional<CollectorRequest> pendingRequest = collectorRequestRepository.findByUserAndStatusAndType(user,
+                RequestStatus.PENDING, org.grevo.grevobematerial.entity.enums.RequestType.JOIN);
         if (pendingRequest.isPresent()) {
             return ResponseEntity.ok(Map.of(
                     "status", "PENDING",
                     "enterprise", pendingRequest.get().getEnterprise()));
+        }
+
+        Optional<CollectorRequest> rejectedRequest = collectorRequestRepository.findByUserAndStatusAndType(user,
+                RequestStatus.REJECTED, org.grevo.grevobematerial.entity.enums.RequestType.JOIN);
+        if (rejectedRequest.isPresent()) {
+            return ResponseEntity.ok(Map.of(
+                    "status", "REJECTED",
+                    "enterprise", rejectedRequest.get().getEnterprise()));
         }
 
         return ResponseEntity.ok(Map.of("status", "NONE"));
@@ -105,35 +128,96 @@ public class CollectorEnterpriseController {
             return ResponseEntity.badRequest().body(Map.of("message", "User already belongs to an enterprise"));
         }
 
-        if (collectorRequestRepository.existsByUserAndStatus(user, RequestStatus.PENDING)) {
-            return ResponseEntity.badRequest().body(Map.of("message", "User already has a pending request"));
+        if (collectorRequestRepository.existsByUserAndStatusAndType(user, RequestStatus.PENDING,
+                org.grevo.grevobematerial.entity.enums.RequestType.JOIN)) {
+            return ResponseEntity.badRequest().body(Map.of("message", "User already has a pending join request"));
         }
 
         Enterprise enterprise = enterpriseRepository.findById(enterpriseId)
                 .orElseThrow(() -> new RuntimeException("Enterprise not found"));
 
-        CollectorRequest request = new CollectorRequest();
-        request.setUser(user);
-        request.setEnterprise(enterprise);
-        request.setStatus(RequestStatus.PENDING);
+        List<CollectorRequest> existingRequests = collectorRequestRepository.findAllByUser(user);
+        CollectorRequest request;
+        if (!existingRequests.isEmpty()) {
+            // Use the first one
+            request = existingRequests.get(0);
+
+            // Delete duplicates
+            if (existingRequests.size() > 1) {
+                for (int i = 1; i < existingRequests.size(); i++) {
+                    collectorRequestRepository.delete(existingRequests.get(i));
+                }
+            }
+
+            request.setEnterprise(enterprise);
+            request.setStatus(RequestStatus.PENDING);
+            request.setType(org.grevo.grevobematerial.entity.enums.RequestType.JOIN);
+        } else {
+            request = new CollectorRequest();
+            request.setUser(user);
+            request.setEnterprise(enterprise);
+            request.setStatus(RequestStatus.PENDING);
+            request.setType(org.grevo.grevobematerial.entity.enums.RequestType.JOIN);
+        }
+
         collectorRequestRepository.save(request);
 
         return ResponseEntity.ok(Map.of("message", "Request sent successfully", "status", "PENDING"));
     }
 
     @PostMapping("/leave")
-    public ResponseEntity<?> leaveOrCancel() {
+    public ResponseEntity<?> leaveOrCancel(@RequestBody(required = false) Map<String, String> body) {
         Users user = getCurrentUser();
         Collectors collector = getOrCreateCollectorProfile(user);
 
         if (collector.getEnterprise() != null) {
-            collector.setEnterprise(null);
+            Optional<CollectorRequest> leaveReq = collectorRequestRepository.findByUserAndStatusAndType(user,
+                    RequestStatus.PENDING, org.grevo.grevobematerial.entity.enums.RequestType.LEAVE);
+
+            if (leaveReq.isPresent()) {
+                collectorRequestRepository.delete(leaveReq.get());
+                collector.setCurrentStatus("ACTIVE");
+                collector.setLeaveReason(null);
+                collectorsRepository.save(collector);
+
+                return ResponseEntity.ok(Map.of("message", "Leave request cancelled.", "status", "APPROVED"));
+            }
+
+            Optional<CollectorRequest> leaveRej = collectorRequestRepository.findByUserAndStatusAndType(user,
+                    RequestStatus.REJECTED, org.grevo.grevobematerial.entity.enums.RequestType.LEAVE);
+
+            if (leaveRej.isPresent()) {
+                collectorRequestRepository.delete(leaveRej.get());
+                collector.setCurrentStatus("ACTIVE");
+                collector.setLeaveReason(null);
+                collectorsRepository.save(collector);
+
+                return ResponseEntity.ok(Map.of("message", "Notification acknowledged.", "status", "APPROVED"));
+            }
+
+            String reason = (body != null) ? body.get("reason") : null;
+            if (reason == null || reason.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Reason is required to leave enterprise"));
+            }
+
+            CollectorRequest req = new CollectorRequest();
+            req.setUser(user);
+            req.setEnterprise(collector.getEnterprise());
+            req.setStatus(RequestStatus.PENDING);
+            req.setType(org.grevo.grevobematerial.entity.enums.RequestType.LEAVE);
+            req.setReason(reason);
+            collectorRequestRepository.save(req);
+
+            collector.setCurrentStatus("LEAVE_REQUESTED");
+            collector.setLeaveReason(reason);
             collectorsRepository.save(collector);
-            return ResponseEntity.ok(Map.of("message", "You have left the enterprise", "status", "NONE"));
+
+            return ResponseEntity
+                    .ok(Map.of("message", "Leave request sent. Waiting for approval.", "status", "LEAVE_REQUESTED"));
         }
 
-        Optional<CollectorRequest> pendingRequest = collectorRequestRepository.findByUserAndStatus(user,
-                RequestStatus.PENDING);
+        Optional<CollectorRequest> pendingRequest = collectorRequestRepository.findByUserAndStatusAndType(user,
+                RequestStatus.PENDING, org.grevo.grevobematerial.entity.enums.RequestType.JOIN);
         if (pendingRequest.isPresent()) {
             collectorRequestRepository.delete(pendingRequest.get());
             return ResponseEntity.ok(Map.of("message", "Request cancelled successfully", "status", "NONE"));

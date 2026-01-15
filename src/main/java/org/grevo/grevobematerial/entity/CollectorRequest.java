@@ -28,9 +28,17 @@ public class CollectorRequest {
     private Enterprise enterprise;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(length = 20)
     private RequestStatus status;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private org.grevo.grevobematerial.entity.enums.RequestType type = org.grevo.grevobematerial.entity.enums.RequestType.JOIN;
+
+    @Column(columnDefinition = "TEXT")
+    private String reason;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist

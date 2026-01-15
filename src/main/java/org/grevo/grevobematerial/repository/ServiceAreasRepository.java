@@ -14,4 +14,6 @@ public interface ServiceAreasRepository extends JpaRepository<ServiceAreas, Inte
     Optional<ServiceAreas> findByAreaName(String areaName);
 
     java.util.List<ServiceAreas> findAllByIsActiveTrue();
+
+    Optional<ServiceAreas> findFirstByAreaNameContainingIgnoreCaseAndIsActiveTrue(String areaName);
 }

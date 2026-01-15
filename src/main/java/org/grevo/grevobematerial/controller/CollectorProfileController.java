@@ -42,6 +42,7 @@ public class CollectorProfileController {
                 .vehiclePlate(collector.getVehiclePlate())
                 .maxCapacity(collector.getMaxCapacity())
                 .currentStatus(collector.getCurrentStatus())
+                .isOnline(collector.getIsOnline() != null ? collector.getIsOnline() : false)
                 .lastActiveAt(collector.getLastActiveAt())
                 .user(CollectorProfileResponse.UserInfo.builder()
                         .id(user.getUserId())
@@ -87,5 +88,32 @@ public class CollectorProfileController {
         return ResponseEntity.ok(Map.of(
                 "message", "Profile updated successfully",
                 "data", toResponse(updated)));
+    }
+
+    @PostMapping("/status")
+    public ResponseEntity<?> updateStatus(@RequestBody Map<String, Boolean> statusUpdate) {
+        Users user = getCurrentUser();
+        Collectors collector = collectorsRepository.findByUser(user)
+                .orElseThrow(() -> new RuntimeException("Collector profile not found"));
+
+        if (!"ACTIVE".equals(collector.getCurrentStatus())) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("message", "Only active collectors can change online status"));
+        }
+
+        Boolean isOnline = statusUpdate.get("isOnline");
+        if (isOnline == null) {
+            return ResponseEntity.badRequest().body(Map.of("message", "isOnline field is required"));
+        }
+
+        collector.setIsOnline(isOnline);
+        if (Boolean.TRUE.equals(isOnline)) {
+            collector.setLastActiveAt(java.time.LocalDateTime.now());
+        }
+        collectorsRepository.save(collector);
+
+        return ResponseEntity.ok(Map.of(
+                "message", "Status updated successfully",
+                "isOnline", isOnline));
     }
 }

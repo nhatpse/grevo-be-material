@@ -34,5 +34,10 @@ public class Collectors {
 
     private String currentStatus;
 
+    private String leaveReason;
+
     private LocalDateTime lastActiveAt;
+
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isOnline = false;
 }
