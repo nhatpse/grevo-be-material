@@ -58,7 +58,12 @@ public class SecurityConfig {
                                                                 "/swagger-ui/**",
                                                                 "/swagger-ui.html")
                                                 .permitAll()
+                                                .requestMatchers(org.springframework.http.HttpMethod.GET,
+                                                                "/api/admin/areas")
+                                                .hasAnyAuthority("ADMIN", "ENTERPRISE")
                                                 .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
+                                                .requestMatchers("/api/collector/**").hasAuthority("COLLECTOR")
+                                                .requestMatchers("/api/enterprises/**").hasAuthority("ENTERPRISE")
                                                 .anyRequest().authenticated())
                                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 

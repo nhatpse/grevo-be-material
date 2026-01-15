@@ -29,12 +29,9 @@ public class WasteReportServiceImpl implements WasteReportService {
     @Override
     @Transactional
     public WasteReportResponse createReport(WasteReportRequest request, List<MultipartFile> images, String username) {
-        // 1. Get User and Citizen (principal.getName() returns username from JWT, not
-        // email)
         Users user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
 
-        // Get or create Citizens profile for this user
         Citizens citizen = citizensRepository.findByUser(user)
                 .orElseGet(() -> {
                     Citizens newCitizen = new Citizens();
@@ -43,7 +40,6 @@ public class WasteReportServiceImpl implements WasteReportService {
                     return citizensRepository.save(newCitizen);
                 });
 
-        // 2. Create WasteReports entity
         WasteReports report = new WasteReports();
         report.setCitizen(citizen);
         report.setTitle(request.getTitle());
@@ -54,19 +50,16 @@ public class WasteReportServiceImpl implements WasteReportService {
         report.setWasteQuantity(request.getWasteQuantity());
         report.setItemWeights(request.getItemWeights());
 
-        // Set Waste Type (String: 'organic', 'recyclable', 'hazardous', 'Other')
         report.setWasteType(request.getWasteType());
 
-        // Set Service Area (Optional)
         if (request.getAreaId() != null) {
             ServiceAreas area = serviceAreasRepository.findById(request.getAreaId())
-                    .orElse(null); // Or throw if strictly required
+                    .orElse(null);
             report.setArea(area);
         }
 
         report = wasteReportsRepository.save(report);
 
-        // 3. Handle Images
         List<String> imageUrls = new ArrayList<>();
         if (images != null && !images.isEmpty()) {
             for (MultipartFile file : images) {
@@ -86,7 +79,6 @@ public class WasteReportServiceImpl implements WasteReportService {
             }
         }
 
-        // 4. Build Response
         return WasteReportResponse.builder()
                 .reportId(report.getReportId())
                 .title(report.getTitle())

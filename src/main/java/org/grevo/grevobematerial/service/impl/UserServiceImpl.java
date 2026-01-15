@@ -107,7 +107,6 @@ public class UserServiceImpl implements UserService {
                             .valueOf(role.toUpperCase());
                     predicates.add(criteriaBuilder.equal(root.get("role"), roleEnum));
                 } catch (IllegalArgumentException e) {
-                    // Ignore invalid roles or handle validation
                 }
             }
 
@@ -164,10 +163,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Integer userId) {
-        if (!userRepository.existsById(userId)) {
-            throw new RuntimeException("User not found");
-        }
-        userRepository.deleteById(userId);
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setIsActive(false);
+        userRepository.save(user);
     }
 
     @Override

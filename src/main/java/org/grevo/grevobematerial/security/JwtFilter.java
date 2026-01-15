@@ -27,31 +27,22 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain filterChain) throws ServletException, IOException {
+            HttpServletResponse response,
+            FilterChain filterChain) throws ServletException, IOException {
         try {
-            // Lấy JWT từ request
             String jwt = parseJwt(request);
 
-            // Nếu có JWT và JWT hợp lệ
             if (jwt != null && jwtUtils.validateToken(jwt)) {
-                // Lấy username từ JWT
                 String username = jwtUtils.getUsernameFromToken(jwt);
 
-                // Load thông tin user
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                // Tạo authentication object
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(
-                                userDetails,
-                                null,
-                                userDetails.getAuthorities()
-                        );
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        null,
+                        userDetails.getAuthorities());
 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                // Set authentication vào SecurityContext
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {
@@ -61,12 +52,11 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    // Lấy JWT token từ header Authorization
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
 
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            return headerAuth.substring(7); // Bỏ "Bearer " để lấy token
+            return headerAuth.substring(7);
         }
 
         return null;

@@ -1,0 +1,639 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.grevo:grevo-be-material >---------------------
+[INFO] Building grevo-be-material 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ grevo-be-material ---
+[INFO] Deleting D:\Grevo\grevo-be-material\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ grevo-be-material ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ grevo-be-material ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 81 source files with javac [debug parameters release 21] to target\classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/EnterpriseCollectorController.java:[20,1] a type with the same simple name is already defined by the single-type-import of org.grevo.grevobematerial.entity.Collectors
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[19,22] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[20,22] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[21,22] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[22,22] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[23,22] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[24,22] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[25,22] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[36,25] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[37,25] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[38,25] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[39,25] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[40,25] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[41,25] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[42,25] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[43,25] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[54,25] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[55,25] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[56,25] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[57,25] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[58,25] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[59,25] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[60,25] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[61,25] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[72,25] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[73,25] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[74,25] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[75,25] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[76,25] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[77,25] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[78,25] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[79,25] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[33,32] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[30,31] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[31,31] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[32,34] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[54,28] cannot find symbol
+  symbol:   method setAreaName(java.lang.String)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[56,28] cannot find symbol
+  symbol:   method setAreaCode(java.lang.String)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[64,20] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[65,19] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[72,23] cannot find symbol
+  symbol:   method setEnterprise(org.grevo.grevobematerial.entity.Enterprise)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[73,23] cannot find symbol
+  symbol:   method setArea(org.grevo.grevobematerial.entity.ServiceAreas)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[74,23] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[91,20] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[92,19] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[99,23] cannot find symbol
+  symbol:   method setEnterprise(org.grevo.grevobematerial.entity.Enterprise)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[100,23] cannot find symbol
+  symbol:   method setArea(org.grevo.grevobematerial.entity.ServiceAreas)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[101,23] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[111,28] cannot find symbol
+  symbol:   method getEnterprise()
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[115,23] cannot find symbol
+  symbol:   method setIsActive(boolean)
+  location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/LocationService.java:[18,52] cannot find symbol
+  symbol:   method getLat()
+  location: variable request of type org.grevo.grevobematerial.dto.request.CoordinatesRequest
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/LocationService.java:[18,70] cannot find symbol
+  symbol:   method getLng()
+  location: variable request of type org.grevo.grevobematerial.dto.request.CoordinatesRequest
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/geocoding/GoongGeocodingProvider.java:[94,40] cannot find symbol
+  symbol:   method builder()
+  location: class org.grevo.grevobematerial.dto.response.LocationResponse
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/AdminEnterpriseController.java:[36,19] cannot find symbol
+  symbol:   method setIsActive(java.lang.Boolean)
+  location: variable enterprise of type org.grevo.grevobematerial.entity.Enterprise
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[48,28] cannot find symbol
+  symbol:   method setAreaName(java.lang.String)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[49,28] cannot find symbol
+  symbol:   method setAreaCode(java.lang.String)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[50,28] cannot find symbol
+  symbol:   method setLat(java.lang.Double)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[51,28] cannot find symbol
+  symbol:   method setLng(java.lang.Double)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[52,28] cannot find symbol
+  symbol:   method setType(java.lang.String)
+  location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/AuthController.java:[35,25] cannot find symbol
+  symbol:   method getMessage()
+  location: variable response of type org.grevo.grevobematerial.dto.response.AuthResponse
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[55,13] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[56,13] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[57,13] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[58,13] cannot find symbol
+  symbol:   method setPhone(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[59,13] cannot find symbol
+  symbol:   method setAddress(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[60,13] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[61,13] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[67,16] cannot find symbol
+  symbol:   method setUser(org.grevo.grevobematerial.entity.Users)
+  location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[68,16] cannot find symbol
+  symbol:   method setTotalPoints(int)
+  location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[71,63] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[75,21] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[76,21] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[77,21] cannot find symbol
+  symbol:   method getGoogleId()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[78,21] cannot find symbol
+  symbol:   method getFullName()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[79,21] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[80,21] cannot find symbol
+  symbol:   method getPhone()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[81,21] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[82,21] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[83,21] cannot find symbol
+  symbol:   method getAvatar()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[100,21] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[101,21] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[102,21] cannot find symbol
+  symbol:   method getGoogleId()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[103,21] cannot find symbol
+  symbol:   method getFullName()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[104,21] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[105,21] cannot find symbol
+  symbol:   method getPhone()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[106,21] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[107,21] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[108,21] cannot find symbol
+  symbol:   method getAvatar()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[117,17] cannot find symbol
+  symbol:   method setGoogleId(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[118,17] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[119,17] cannot find symbol
+  symbol:   method setFullName(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[121,17] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[122,17] cannot find symbol
+  symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[123,17] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[129,20] cannot find symbol
+  symbol:   method setUser(org.grevo.grevobematerial.entity.Users)
+  location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[130,20] cannot find symbol
+  symbol:   method setTotalPoints(int)
+  location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[133,21] cannot find symbol
+  symbol:   method getGoogleId()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[134,21] cannot find symbol
+  symbol:   method setGoogleId(java.lang.String)
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[139,18] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[143,63] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type org.grevo.grevobematerial.entity.Users
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.839 s
+[INFO] Finished at: 2026-01-15T18:20:35+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.1:compile (default-compile) on project grevo-be-material: Compilation failure: Compilation failure: 
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/EnterpriseCollectorController.java:[20,1] a type with the same simple name is already defined by the single-type-import of org.grevo.grevobematerial.entity.Collectors
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[19,22] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[20,22] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[21,22] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[22,22] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[23,22] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[24,22] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[25,22] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable admin of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[36,25] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[37,25] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[38,25] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[39,25] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[40,25] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[41,25] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[42,25] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[43,25] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[54,25] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[55,25] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[56,25] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[57,25] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[58,25] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[59,25] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[60,25] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[61,25] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[72,25] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[73,25] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[74,25] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[75,25] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[76,25] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[77,25] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[78,25] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/config/DataSeeder.java:[79,25] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[33,32] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[30,31] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[31,31] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/CustomUserDetailsService.java:[32,34] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[54,28] cannot find symbol
+[ERROR]   symbol:   method setAreaName(java.lang.String)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[56,28] cannot find symbol
+[ERROR]   symbol:   method setAreaCode(java.lang.String)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[64,20] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[65,19] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[72,23] cannot find symbol
+[ERROR]   symbol:   method setEnterprise(org.grevo.grevobematerial.entity.Enterprise)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[73,23] cannot find symbol
+[ERROR]   symbol:   method setArea(org.grevo.grevobematerial.entity.ServiceAreas)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[74,23] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[91,20] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[92,19] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable ea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[99,23] cannot find symbol
+[ERROR]   symbol:   method setEnterprise(org.grevo.grevobematerial.entity.Enterprise)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[100,23] cannot find symbol
+[ERROR]   symbol:   method setArea(org.grevo.grevobematerial.entity.ServiceAreas)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[101,23] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[111,28] cannot find symbol
+[ERROR]   symbol:   method getEnterprise()
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/EnterpriseAreaService.java:[115,23] cannot find symbol
+[ERROR]   symbol:   method setIsActive(boolean)
+[ERROR]   location: variable enterpriseArea of type org.grevo.grevobematerial.entity.EnterpriseArea
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/LocationService.java:[18,52] cannot find symbol
+[ERROR]   symbol:   method getLat()
+[ERROR]   location: variable request of type org.grevo.grevobematerial.dto.request.CoordinatesRequest
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/LocationService.java:[18,70] cannot find symbol
+[ERROR]   symbol:   method getLng()
+[ERROR]   location: variable request of type org.grevo.grevobematerial.dto.request.CoordinatesRequest
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/geocoding/GoongGeocodingProvider.java:[94,40] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class org.grevo.grevobematerial.dto.response.LocationResponse
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/AdminEnterpriseController.java:[36,19] cannot find symbol
+[ERROR]   symbol:   method setIsActive(java.lang.Boolean)
+[ERROR]   location: variable enterprise of type org.grevo.grevobematerial.entity.Enterprise
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[48,28] cannot find symbol
+[ERROR]   symbol:   method setAreaName(java.lang.String)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[49,28] cannot find symbol
+[ERROR]   symbol:   method setAreaCode(java.lang.String)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[50,28] cannot find symbol
+[ERROR]   symbol:   method setLat(java.lang.Double)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[51,28] cannot find symbol
+[ERROR]   symbol:   method setLng(java.lang.Double)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/ServiceAreaService.java:[52,28] cannot find symbol
+[ERROR]   symbol:   method setType(java.lang.String)
+[ERROR]   location: variable newArea of type org.grevo.grevobematerial.entity.ServiceAreas
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/controller/AuthController.java:[35,25] cannot find symbol
+[ERROR]   symbol:   method getMessage()
+[ERROR]   location: variable response of type org.grevo.grevobematerial.dto.response.AuthResponse
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[55,13] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[56,13] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[57,13] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[58,13] cannot find symbol
+[ERROR]   symbol:   method setPhone(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[59,13] cannot find symbol
+[ERROR]   symbol:   method setAddress(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[60,13] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[61,13] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[67,16] cannot find symbol
+[ERROR]   symbol:   method setUser(org.grevo.grevobematerial.entity.Users)
+[ERROR]   location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[68,16] cannot find symbol
+[ERROR]   symbol:   method setTotalPoints(int)
+[ERROR]   location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[71,63] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[75,21] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[76,21] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[77,21] cannot find symbol
+[ERROR]   symbol:   method getGoogleId()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[78,21] cannot find symbol
+[ERROR]   symbol:   method getFullName()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[79,21] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[80,21] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[81,21] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[82,21] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[83,21] cannot find symbol
+[ERROR]   symbol:   method getAvatar()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[100,21] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[101,21] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[102,21] cannot find symbol
+[ERROR]   symbol:   method getGoogleId()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[103,21] cannot find symbol
+[ERROR]   symbol:   method getFullName()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[104,21] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[105,21] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[106,21] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[107,21] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[108,21] cannot find symbol
+[ERROR]   symbol:   method getAvatar()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[117,17] cannot find symbol
+[ERROR]   symbol:   method setGoogleId(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[118,17] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[119,17] cannot find symbol
+[ERROR]   symbol:   method setFullName(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[121,17] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[122,17] cannot find symbol
+[ERROR]   symbol:   method setRole(org.grevo.grevobematerial.entity.enums.Role)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[123,17] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[129,20] cannot find symbol
+[ERROR]   symbol:   method setUser(org.grevo.grevobematerial.entity.Users)
+[ERROR]   location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[130,20] cannot find symbol
+[ERROR]   symbol:   method setTotalPoints(int)
+[ERROR]   location: variable citizen of type org.grevo.grevobematerial.entity.Citizens
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[133,21] cannot find symbol
+[ERROR]   symbol:   method getGoogleId()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[134,21] cannot find symbol
+[ERROR]   symbol:   method setGoogleId(java.lang.String)
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[139,18] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] /D:/Grevo/grevo-be-material/src/main/java/org/grevo/grevobematerial/service/impl/AuthService.java:[143,63] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type org.grevo.grevobematerial.entity.Users
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

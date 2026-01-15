@@ -16,4 +16,6 @@ public interface EnterpriseAreaRepository extends JpaRepository<EnterpriseArea, 
     List<EnterpriseArea> findByArea(ServiceAreas area);
 
     List<EnterpriseArea> findByEnterpriseAndIsActive(Enterprise enterprise, Boolean isActive);
+
+    java.util.Optional<EnterpriseArea> findByEnterpriseAndArea(Enterprise enterprise, ServiceAreas area);
 }

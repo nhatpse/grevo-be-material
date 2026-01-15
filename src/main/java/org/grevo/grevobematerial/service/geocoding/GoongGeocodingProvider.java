@@ -126,14 +126,12 @@ public class GoongGeocodingProvider {
         }
 
         try {
-            // Step 1: Call Autocomplete API to get place_id
             String placeId = getFirstPlaceIdFromAutocomplete(address);
             if (placeId == null) {
                 log.info("No autocomplete results/place_id found for: {}", address);
                 return null;
             }
 
-            // Step 2: Call Place Detail API to get coordinates
             return getCoordinatesFromPlaceId(placeId);
 
         } catch (Exception e) {
@@ -200,10 +198,7 @@ public class GoongGeocodingProvider {
                 formattedAddress = name;
             }
 
-            // Determine confidence (Autocomplete results are usually quite confident if
-            // clicked/selected,
-            // but here we are taking the first top result)
-            String confidence = "high"; // Default to high for specific place result
+            String confidence = "high";
 
             log.info("Place Detail Result: lat={}, lng={}, address={}", lat, lng, formattedAddress);
 
@@ -228,10 +223,6 @@ public class GoongGeocodingProvider {
         }
     }
 
-    /**
-     * Autocomplete search for places using V2 API.
-     * API: GET /v2/place/autocomplete?input={text}&api_key={key}
-     */
     public String autocomplete(String text, String sessionToken) {
         if (apiKey == null || apiKey.isBlank())
             return null;
@@ -251,10 +242,6 @@ public class GoongGeocodingProvider {
         }
     }
 
-    /**
-     * Get place details by place_id using V2 API.
-     * API: GET /v2/place/detail?place_id={id}&api_key={key}
-     */
     public String getPlaceDetail(String placeId, String sessionToken) {
         if (apiKey == null || apiKey.isBlank())
             return null;
@@ -274,10 +261,6 @@ public class GoongGeocodingProvider {
         }
     }
 
-    /**
-     * Get street name from coordinates using V2 Geocode Street API.
-     * API: GET /v2/geocode/street?latlng={lat},{lng}&api_key={key}
-     */
     public String getStreetName(double lat, double lng) {
         if (apiKey == null || apiKey.isBlank())
             return null;
@@ -304,9 +287,6 @@ public class GoongGeocodingProvider {
         }
     }
 
-    /**
-     * Generate static map URL for a location.
-     */
     public String getStaticMapUrl(double lat, double lng) {
         if (apiKey == null || apiKey.isBlank())
             return null;

@@ -62,7 +62,6 @@ public class AuthService {
 
         userRepository.save(user);
 
-        // Create Citizens profile for new user with role CITIZEN
         Citizens citizen = new Citizens();
         citizen.setUser(user);
         citizen.setTotalPoints(0);
@@ -124,7 +123,6 @@ public class AuthService {
 
             userRepository.save(user);
 
-            // Create Citizens profile for new Google user with role CITIZEN
             Citizens citizen = new Citizens();
             citizen.setUser(user);
             citizen.setTotalPoints(0);

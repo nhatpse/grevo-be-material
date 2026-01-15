@@ -20,13 +20,11 @@ public class JwtUtils {
     @Value("${jwt.expiration}")
     private long jwtExpirationMs;
 
-    // Tạo JWT token từ username
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return generateTokenFromUsername(userDetails.getUsername());
     }
 
-    // Tạo JWT token từ username (dùng cho register)
     public String generateTokenFromUsername(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -36,7 +34,6 @@ public class JwtUtils {
                 .compact();
     }
 
-    // Lấy username từ JWT token
     public String getUsernameFromToken(String token) {
         return Jwts.parser()
                 .verifyWith(getSigningKey())
@@ -46,7 +43,6 @@ public class JwtUtils {
                 .getSubject();
     }
 
-    // Validate JWT token
     public boolean validateToken(String token) {
         try {
             Jwts.parser()
@@ -66,7 +62,6 @@ public class JwtUtils {
         return false;
     }
 
-    // Tạo SecretKey từ string secret
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }

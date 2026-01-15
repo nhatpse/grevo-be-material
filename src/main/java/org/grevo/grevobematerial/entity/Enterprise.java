@@ -14,6 +14,7 @@ public class Enterprise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @com.fasterxml.jackson.annotation.JsonProperty("id")
     private Integer enterpriseId;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,4 +32,6 @@ public class Enterprise {
     private String taxCode;
 
     private Integer capacity;
+
+    private Boolean isActive = true;
 }
