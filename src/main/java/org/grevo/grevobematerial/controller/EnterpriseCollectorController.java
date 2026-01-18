@@ -113,6 +113,8 @@ public class EnterpriseCollectorController {
                 item.put("vehicleType", c.getVehicleType() != null ? c.getVehicleType() : "");
                 item.put("vehiclePlate", c.getVehiclePlate() != null ? c.getVehiclePlate() : "");
                 item.put("maxCapacity", c.getMaxCapacity());
+                item.put("currentStatus", Boolean.TRUE.equals(c.getIsOnline()) ? "ACTIVE" : "INACTIVE");
+                item.put("lastActiveAt", c.getLastActiveAt());
 
                 boolean isLeaveRequested = leaveRequestedUserIds.contains(u.getUserId());
                 String reason = leaveReasons.get(u.getUserId());
